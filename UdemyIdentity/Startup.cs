@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyIdentity.Context;
 
 namespace UdemyIdentity
 {
@@ -16,6 +17,12 @@ namespace UdemyIdentity
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //identity ayaða kaldýrmak için
+
+            services.AddDbContext<UdemyContext>();
+                                                    //Identity nerede hangi database ile çalýþacak
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<UdemyContext>();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,13 +34,11 @@ namespace UdemyIdentity
             }
 
             app.UseRouting();
+            app.UseStaticFiles();//wwwroot dýþarý açýldý
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
