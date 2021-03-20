@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                        The current link item
+                    </a>
+                    <a asp-action="UpdateUser" asp-controller="Panel" class="list-group-item list-group-item-action">Bilgilerimi güncelle</a>
+                    <a asp-action="Index" asp-controller="Rol" class="list-group-item list-group-item-action">Rol işlemleri</a>
+                    <a asp-action="UserList" asp-controller="Rol" class="list-group-item list-group-item-action">Kullanıcı İşlemleri</a>
+                    <a asp-action="Index" asp-controller="Admin" class="list-group-item list-group-item-action">Admin sayfası</a>
+                    <a asp-action="Index" asp-controller="Developer" class="list-group-item list-group-item-action">Developer sayfası</a>
+                    <a asp-action="Index" asp-controller="Female" class="list-group-item list-group-item-action">Bayanlar için olan sayfa</a>
+                    <a asp-action="LogOut" asp-controller="Panel" class="list-group-item list-group-item-action">Çıkış yap</a>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>
